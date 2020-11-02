@@ -53,6 +53,8 @@ template<class T>
 inline Queue<T>::Queue(Queue & _queue) //конструктор копирования
 	{
 		Array = new const T*[_queue.size];
+		for (int i = first; i < last; i++)
+			Array[i] = _queue.Array[i];
 		size = _queue.size;
 		first = _queue.first;
 		last = _queue.last;

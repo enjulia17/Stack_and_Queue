@@ -47,6 +47,8 @@ template<class T>
 inline Stack<T>::Stack(Stack & _stack) //конструктор копирования
 {
 	Array = new const T*[_stack.size];
+	for (int i = 0; i < last; i++)
+		Array[i] = _stack.Array[i];
 	size = _stack.size;
 	last = _stack.last;
 }
