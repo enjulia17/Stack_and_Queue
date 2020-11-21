@@ -42,4 +42,49 @@ int main() // Демонстрация работы стека
 	
 	cout << "Демонстрация работы очереди" << endl;
 	cout << "A=" << b.pop() << endl; 	
+//---------------------------------------------------------------------------------------------//
+
+
+// Доп. задания
+
+	cout << "Демонстрация работы доп. заданий" << endl;
+
+	A = -1;
+	B = 6;
+	C = 27;
+	D = 3;
+	E = 0;
+
+	Queue<int> c(5);
+	c.push(A);
+	c.push(B);
+	c.push(C);
+	c.push(D);
+	c.push(E);
+
+	cout << c.find(3) << endl;
+
+
+
+	A = 1;
+	B = 6;
+	C = 4;
+	D = 3;
+	E = 10;
+	F = 2;
+
+	Stack<int> ee(6);
+	ee.push(A);
+	ee.push(B);
+	ee.push(C);
+	ee.push(D);
+	ee.push(E);
+	ee.push(F);
+	
+	ee.transform();
+
+	cout << ee.pop() << " ";
+	cout << ee.pop() << " ";
+	cout << ee.pop() << " ";
+	cout << ee.pop() << " ";
 }

@@ -24,6 +24,8 @@ public:
 	bool IsFull();
 	int GetSize();
 	void SetMemory(void* p, int _size);
+
+	void transform();
 };
 
 template<class T>
@@ -114,6 +116,58 @@ inline void Stack<T>::SetMemory(void* p, int _size)
 	size = _size;
 	last = _size;
 	DataCount = _size;
+}
+
+//Доп.задание
+template<class T>
+inline void Stack<T>::transform()
+{
+	const T** temp_arr;
+	temp_arr = new const T*[size];
+	const T* temp = nullptr;
+	int counter = 0;
+	for (int i = 0; i < last; i++)
+	{
+		if (*Array[i] % 2 == 1)
+		{
+			if (temp == nullptr)
+			{
+				temp_arr[counter] = Array[i];
+				counter++;
+			}
+
+			if (temp != nullptr)
+			{
+				temp_arr[counter] = temp;
+				temp = nullptr;
+				counter++;
+				temp_arr[counter] = Array[i];
+				counter++;
+			}
+		}
+		else
+		{
+			if (temp == nullptr)
+				temp = Array[i];
+			else if (temp != nullptr)
+				if (*temp < *Array[i])
+					temp = Array[i];
+			if (i == last - 1)
+			{
+				temp_arr[counter] = temp;
+				counter++;
+			}
+		}
+	}
+
+	last = counter;
+	DataCount = last;
+	delete[] Array;
+	Array = new const T*[size];
+	for (int i = 0; i < last; i++)
+		Array[i] = temp_arr[i];
+	delete[] temp_arr;
+
 }
 
 

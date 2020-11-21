@@ -25,6 +25,8 @@ public:
 	bool IsEmpty();
 	bool IsFull();
 	int GetSize();
+
+	T find(int k);
 	
 };
 
@@ -109,4 +111,25 @@ inline int Queue<T>::GetSize()
 	{
 		return size;
 	}
+
+//Доп.задание
+template<class T>
+inline T Queue<T>::find(int k)
+{
+	T temp = 0;
+	bool zero_elems = true;
+	for(int i = first; i < last + DataCount; i++)
+	{
+		if (*Array[i] % k == 0)
+			if ((*Array[i] > temp) || (zero_elems == true))
+			{
+				temp = *Array[i];
+				zero_elems = false;
+			}
+	}
+	if (zero_elems)
+		return -1;
+	else
+		return temp;
+}
 
